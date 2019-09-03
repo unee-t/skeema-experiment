@@ -1,0 +1,5 @@
+[unte-demo]
+flavor=mysql:5.7
+host=unte.cluster-c2waklyujftr.ap-southeast-1.rds.amazonaws.com
+port=3306
+user=admin

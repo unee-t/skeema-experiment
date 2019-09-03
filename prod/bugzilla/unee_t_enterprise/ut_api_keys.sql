@@ -1,0 +1,22 @@
+CREATE TABLE `ut_api_keys` (
+  `id_api_key` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Id in this table',
+  `syst_created_datetime` timestamp NULL DEFAULT NULL COMMENT 'When was this record created?',
+  `creation_system_id` int(11) DEFAULT NULL COMMENT 'What is the id of the sytem that was used for the creation of the record?',
+  `created_by_id` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL COMMENT 'The MEFE ID of the user who created this record',
+  `creation_method` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL COMMENT 'How was this record created',
+  `syst_updated_datetime` timestamp NULL DEFAULT NULL COMMENT 'When was this record last updated?',
+  `update_system_id` int(11) DEFAULT NULL COMMENT 'What is the id of the sytem that was used for the last update the record?',
+  `updated_by_id` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL COMMENT 'The MEFE ID of the user who updated this record',
+  `update_method` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL COMMENT 'How was this record updated?',
+  `external_system_id` int(11) DEFAULT NULL COMMENT 'A FK to the table `ut_external_sot_for_unee_t_objects` - Store data about the source of truth for the information we need',
+  `revoked_datetime` timestamp NULL DEFAULT NULL COMMENT 'When was this API key revoked',
+  `is_obsolete` tinyint(1) DEFAULT '0' COMMENT '1 is this API key is revoked or obsolete',
+  `api_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL COMMENT 'The API Key',
+  `mefe_user_id` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL COMMENT 'The ID of MEFE user which is associated to this API key',
+  `organization_id` int(11) unsigned NOT NULL COMMENT 'A FK to the table `uneet_enterprise_organizations` - The ID of the organization for the user',
+  PRIMARY KEY (`mefe_user_id`,`organization_id`) COMMENT 'We have only 1 MEFE User ID for each organization',
+  UNIQUE KEY `unique_id_for_each_api` (`id_api_key`) COMMENT 'unique ID in this table',
+  UNIQUE KEY `unit_api_key` (`api_key`) COMMENT 'It is not possible to have similar API keys',
+  KEY `api_key_organization_id` (`organization_id`),
+  CONSTRAINT `api_key_organization_id` FOREIGN KEY (`organization_id`) REFERENCES `uneet_enterprise_organizations` (`id_organization`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;

@@ -1,0 +1,5 @@
+[unte-prod]
+flavor=mysql:5.7
+host=unte.cluster-chqufb94mh1i.ap-southeast-1.rds.amazonaws.com
+port=3306
+user=admin
