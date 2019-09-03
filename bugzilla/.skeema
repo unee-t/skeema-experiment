@@ -1,0 +1,17 @@
+[bugzilla-prod]
+flavor=mysql:5.7
+host=auroradb.unee-t.com
+port=3306
+user=root
+
+[bugzilla-dev]
+flavor=mysql:5.7
+host=auroradb.dev.unee-t.com
+port=3306
+user=root
+
+[bugzilla-demo]
+flavor=mysql:5.7
+host=auroradb.demo.unee-t.com
+port=3306
+user=root
