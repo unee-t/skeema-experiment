@@ -1,0 +1,21 @@
+CREATE TABLE `hmlet_level_3_units` (
+  `external_id` int(11) NOT NULL DEFAULT '0' COMMENT 'unique id in this table',
+  `external_system_id` longtext COLLATE utf8mb4_unicode_520_ci,
+  `external_table` longtext COLLATE utf8mb4_unicode_520_ci,
+  `syst_created_datetime` longtext CHARACTER SET latin1,
+  `creation_system_id` bigint(20) DEFAULT NULL,
+  `created_by_id` bigint(20) DEFAULT NULL,
+  `creation_method` longtext COLLATE utf8mb4_unicode_520_ci,
+  `is_obsolete` tinyint(1) DEFAULT '0' COMMENT 'Is this an obsolete record',
+  `is_creation_needed_in_unee_t` int(1) NOT NULL DEFAULT '0',
+  `do_not_insert` int(1) NOT NULL DEFAULT '0',
+  `unee_t_unit_type` longtext COLLATE utf8mb4_unicode_520_ci,
+  `system_id_unit` int(10) NOT NULL COMMENT 'id in the flat table',
+  `system_id_unit_in_source` int(10) NOT NULL COMMENT 'id in the flat table',
+  `room_type_id` int(11) NOT NULL DEFAULT '1' COMMENT 'The id of the LMB LOI. This is a FK to the table ''db_all_sourcing_dt_4_lmb_loi''',
+  `number_of_beds` int(2) DEFAULT NULL COMMENT 'Number of beds in the room',
+  `surface` int(10) DEFAULT NULL COMMENT 'Room surface in Square feets',
+  `surface_measurment_unit` varchar(3) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `room_designation` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL COMMENT 'The designation (name) of the room',
+  `room_description` mediumtext COLLATE utf8mb4_unicode_520_ci COMMENT 'Comment (use this to explain teh difference between ipi_calculation and actual)'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;

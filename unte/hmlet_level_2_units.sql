@@ -1,0 +1,23 @@
+CREATE TABLE `hmlet_level_2_units` (
+  `external_id` int(10) NOT NULL DEFAULT '0',
+  `external_system_id` longtext COLLATE utf8mb4_unicode_520_ci,
+  `external_table` longtext COLLATE utf8mb4_unicode_520_ci,
+  `syst_created_datetime` longtext CHARACTER SET latin1,
+  `creation_system_id` bigint(20) DEFAULT NULL,
+  `created_by_id` bigint(20) DEFAULT NULL,
+  `creation_method` longtext COLLATE utf8mb4_unicode_520_ci,
+  `is_obsolete` int(1) NOT NULL DEFAULT '0',
+  `is_creation_needed_in_unee_t` int(1) NOT NULL DEFAULT '0',
+  `do_not_insert` int(1) NOT NULL DEFAULT '0',
+  `unee_t_unit_type` longtext COLLATE utf8mb4_unicode_520_ci,
+  `building_system_id` int(10) NOT NULL,
+  `building_system_id_in_source` int(10) NOT NULL,
+  `tower` varchar(50) COLLATE utf8mb4_unicode_520_ci DEFAULT '1',
+  `unit_category_id` int(10) DEFAULT NULL,
+  `designation` varchar(50) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `count_rooms` int(10) DEFAULT NULL,
+  `unit_id` varchar(50) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `surface` int(10) DEFAULT NULL,
+  `surface_measurment_unit` varchar(3) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `description` varchar(72) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;

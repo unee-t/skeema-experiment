@@ -1,0 +1,22 @@
+CREATE TABLE `db_sourcing_ls_0_condo` (
+  `id_condo` int(10) NOT NULL AUTO_INCREMENT,
+  `external_id` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL COMMENT 'The id of the record in an external system',
+  `external_system_id` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL COMMENT 'The id of the system which provides the external_system_id',
+  `external_table` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL COMMENT 'The table in the external system where this record is stored',
+  `obsolete` tinyint(1) DEFAULT '0',
+  `order` int(10) DEFAULT '0',
+  `area_id` int(11) DEFAULT NULL COMMENT 'The Id of the area for this building. This is a FK to the table `209_areas`',
+  `is_creation_needed_in_unee_t` tinyint(1) DEFAULT '0' COMMENT '1 if we need to create this property as a unit in Unee-T',
+  `uneet_creation_datetime` datetime DEFAULT NULL COMMENT 'Datetime when that unit was created in Unee-T',
+  `uneet_id` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL COMMENT 'ID of that Unit in Unee-T. This is a the value in the Mongo collection `unitMetaData`',
+  `condo` varchar(50) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `comment` mediumtext COLLATE utf8mb4_unicode_520_ci,
+  `country_code` varchar(50) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL COMMENT 'A FK to the table `185_country`. The Country code',
+  `ops_cluster_id` int(11) DEFAULT NULL COMMENT 'Map this to Ops Cluster',
+  `lease_type_id` int(11) DEFAULT NULL,
+  `complex_id` int(11) DEFAULT NULL COMMENT 'Map this to db_sourcing_0_complex',
+  `surface_sqf` int(11) DEFAULT NULL COMMENT 'Building level area.',
+  PRIMARY KEY (`id_condo`,`condo`),
+  KEY `id` (`id_condo`),
+  KEY `building_id_area_id` (`area_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci ROW_FORMAT=DYNAMIC;
