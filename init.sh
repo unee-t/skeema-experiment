@@ -10,16 +10,16 @@ bugzilla() {
 }
 
 
-for stage in {dev}
-do
-	skeema init bugzilla-$stage -h $(bugzilla $stage) -u root --password=$(ssm uneet-$stage MYSQL_ROOT_PASSWORD) -d bugzilla
-	skeema init unte-$stage -h $(ssm uneet-$stage UNTEDB_HOST) -u $(ssm uneet-$stage UNTEDB_ROOT_USER) --password=$(ssm uneet-$stage UNTEDB_ROOT_PASS) -d unte
-done
+# for stage in {dev}
+# do
+# 	# skeema init -h auroradb.unee-t.com -u root --password=$(ssm uneet-prod MYSQL_ROOT_PASSWORD) --schema bugzilla -d bugzilla
+# 	skeema init bugzilla-$stage -h $(bugzilla $stage) -u root --password=$(ssm uneet-$stage MYSQL_ROOT_PASSWORD) -d bugzilla
+# 	skeema init unte-$stage -h $(ssm uneet-$stage UNTEDB_HOST) -u $(ssm uneet-$stage UNTEDB_ROOT_USER) --password=$(ssm uneet-$stage UNTEDB_ROOT_PASS) -d unte
+# done
 
-for stage in {dev,demo,prod}
+for stage in {dev,demo}
 do
-	cd bugzilla && 
-	skeema add-environment bugzilla-$stage -h $(bugzilla $stage) -u root --password=$(ssm uneet-$stage MYSQL_ROOT_PASSWORD)
-	cd unte && 
-	skeema add-environment unte-$stage -h $(ssm uneet-$stage UNTEDB_HOST) -u $(ssm uneet-$stage UNTEDB_ROOT_USER) --password=$(ssm uneet-$stage UNTEDB_ROOT_PASS)
+	echo skeema add-environment bugzilla-$stage -h $(bugzilla $stage) -u root --password=$(ssm uneet-$stage MYSQL_ROOT_PASSWORD)
+	#cd unte && 
+	#skeema add-environment unte-$stage -h $(ssm uneet-$stage UNTEDB_HOST) -u $(ssm uneet-$stage UNTEDB_ROOT_USER) --password=$(ssm uneet-$stage UNTEDB_ROOT_PASS)
 done
